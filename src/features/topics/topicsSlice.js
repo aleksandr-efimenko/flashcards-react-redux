@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from 'uuid';
 
 export const topicsSlice = createSlice({
     name: 'topics',
     initialState: {
-        topics: {}
+        topics: {
+        }
     },
     reducers: {
         addTopic: (state, action) => {
@@ -15,8 +15,8 @@ export const topicsSlice = createSlice({
                     ...state.topics,
                     [action.payload.id]: {
                         name: action.payload.name,
-                        icon: action.payload.iconUrl,
-                        quizIdds: []
+                        icon: action.payload.icon,
+                        quizIds: []
                     }
                 }
             }
@@ -24,9 +24,11 @@ export const topicsSlice = createSlice({
     }
 });
 
-export const selectTopics = (state) => state.topics;
+export const selectTopics = (state) => state.topics.topics;
 
 export const { addTopic } = topicsSlice.actions;
+
+export default topicsSlice.reducer;
 
 // const state = {
 //     topics: {
