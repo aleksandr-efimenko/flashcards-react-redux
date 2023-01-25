@@ -14,13 +14,33 @@ export const quizzesSlice = createSlice({
                     [action.payload.id]: {
                         name: action.payload.name,
                         topicId: action.payload.topicId,
-                        cardIds: []
+                        cardIds: action.payload.cardIds
                     }
                 }
             }
         }
     }
 });
+
+export const createQuizAndConnectTopic = (payload) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'quizzes/addQuiz',
+            payload: {
+                name: payload.name,
+                topicId: payload.topicId,
+                cardIds: payload.cardIds
+            }
+        })
+        dispatch({
+            type: 'topics/addQuizToTopic',
+            payload: {
+                topicId: payload.topicId,
+                quizId: payload.quizId
+            }
+        })
+    }
+}
 
 export const selectQuizzes = (state) => state.quizzes.quizzes;
 
