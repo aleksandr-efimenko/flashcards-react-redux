@@ -21,6 +21,7 @@ export const topicsSlice = createSlice({
                     [action.payload.id]: {
                         name: action.payload.name,
                         icon: action.payload.icon,
+                        id: action.payload.id,
                         quizIds: []
                     }
                 }

@@ -14,7 +14,8 @@ export const quizzesSlice = createSlice({
                     [action.payload.id]: {
                         name: action.payload.name,
                         topicId: action.payload.topicId,
-                        cardIds: action.payload.cardIds
+                        cardIds: action.payload.cardIds,
+                        id: action.payload.id
                     }
                 }
             }

@@ -9,7 +9,8 @@ export const cardsSlice = createSlice({
         addCard: (state, action) => {
             state.cards[action.payload.id] = {
                 front: action.payload.front,
-                back: action.payload.back
+                back: action.payload.back,
+                id: action.payload.id
             }
         }
     }
