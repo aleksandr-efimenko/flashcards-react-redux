@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addQuizToTopic } from "../topics/topicsSlice";
 
 export const quizzesSlice = createSlice({
     name: 'quizzes',
@@ -25,21 +26,19 @@ export const quizzesSlice = createSlice({
 
 export const createQuizAndConnectTopic = (payload) => {
     return (dispatch) => {
-        dispatch({
-            type: 'quizzes/addQuiz',
-            payload: {
-                name: payload.name,
-                topicId: payload.topicId,
-                cardIds: payload.cardIds
-            }
+        dispatch(addQuiz({
+            name: payload.name,
+            topicId: payload.topicId,
+            cardIds: payload.cardIds,
+            id: payload.id
         })
-        dispatch({
-            type: 'topics/addQuizToTopic',
-            payload: {
+        )
+        dispatch(addQuizToTopic(
+            {
                 topicId: payload.topicId,
-                quizId: payload.quizId
-            }
-        })
+                quizId: payload.id
+            })
+        )
     }
 }
 

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
 import { selectTopics } from "../features/topics/topicsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addQuiz } from "../features/quizzes/QuizzesSlice";
+import { createQuizAndConnectTopic } from "../features/quizzes/QuizzesSlice";
 import { addCard } from "../features/cards/CardsSlice";
 
 export default function NewQuizForm() {
@@ -39,8 +39,8 @@ export default function NewQuizForm() {
       topicId: topicId,
       cardIds: cardIds
     }
-    dispatch(addQuiz(newQuiz));
-
+    // dispatch(addQuiz(newQuiz));
+    dispatch(createQuizAndConnectTopic(newQuiz));
     history.push(ROUTES.quizzesRoute());
   };
 
